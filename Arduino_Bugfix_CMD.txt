@@ -1,0 +1,7 @@
+Reload Arduino CH341 Driver!
+
+cd ~/ch341ser_linux/driver
+sudo insmod ./ch341.ko
+lsmod | grep ch34
+dmesg | tail -20
+ls /dev/ttyCH341* /dev/ttyUSB* /dev/ttyACM* 2>/dev/null

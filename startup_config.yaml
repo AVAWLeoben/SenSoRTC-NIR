@@ -1,0 +1,12 @@
+CAMERA_TYPE: MVIMPACT_NIR
+CONNECTION_TYPE: MODBUS
+FPS: 30
+MODEL_PATH: /home/admin/Downloads/SenSoRTC-development/Models/GreenPlast/GreenPlast_YOLO11N_Set5_THOR.engine
+MODEL_VERBOSE: true
+MVIMPACT_NIR_SETTINGS_PATH: mvimpact_nir_camera_settings.yaml
+NIR_CLASSIFIER_KIND: SKLEARN_PIPELINE
+NIR_CLASSIFIER_PATH: C:/Users/Technikum-Admin/Desktop/Gerald/SenSoRTC-NIR/SenSoRTC-NIR-MAIN/Models/NIR/PP_DETECT_SNV_SavGol_SNN.joblib
+PFS_PATH: /home/admin/Downloads/SenSoRTC-development/Camera_Settings/X_TESTING/DWRL/Kamerasettings_DWRL_oben_standard_ET1000_GAIN12.pfs
+SCALEABLE_UI: false
+USB_CAMERA_SETTINGS_PATH: sensor_tc_camera_settings.yaml
+VIDEO_PATH: C:/Users/GKoinig/Desktop/SenSoRTC-development/SenSoRTC-development/Camera_Settings/X_TESTING/simulated_camera_video/output_pizza.mp4

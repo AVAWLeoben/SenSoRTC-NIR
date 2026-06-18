@@ -1,0 +1,65 @@
+# Placeholder settings for SenSoRTC MVIMPACT_NIR camera backend.
+# Set source: synthetic to force fake NIR spectra from PE/PET/PP material files.
+camera:
+  source: auto              # auto | mvimpact | synthetic
+  fallback_to_synthetic: true
+  input_mode: spectral           # spectral | classified
+  serial: "181642137271"
+  
+  width: 312
+  spectral_depth: 212
+  rolling_height: 220
+  fps: 446
+
+  # Background decision for SAM/classification is in raw ALU units:
+  # mean(spectrum) < background_threshold -> class 0/background.
+  background_threshold: 300
+  # Do not use background spectra from these .mat files as material templates.
+  # Only spectra with mean >= synthetic_material_min_mean are sampled as PE/PET/PP.
+  synthetic_material_min_mean: 600
+  synthetic_material_samples_per_class: 512
+  synthetic_material_paths:
+    PE: PE.mat
+    PET: PET.mat
+    PP: PP.mat
+
+  synthetic_speed_px: 4.0       # retained for compatibility; object mode uses line age instead of diagonal sine/check patterns
+  synthetic_noise: 8.0
+  synthetic_seed: 1234
+  synthetic_classes: 4          # 0 background, 1 PE, 2 PET, 3 PP
+
+  # Synthetic object mode: finite PE/PET/PP pieces on the belt rather than
+  # periodic/check-pattern stripes. Each object persists over several scan lines
+  # and appears as a distinct blob in the rolling buffer.
+  synthetic_object_mode: true
+  synthetic_object_spawn_probability: 0.18
+  synthetic_object_max_active: 7
+  synthetic_object_min_width: 12
+  synthetic_object_max_width: 55
+  synthetic_object_min_length: 28
+  synthetic_object_max_length: 95
+  synthetic_object_edge_margin: 10
+  synthetic_object_use_mean_spectra: true   # cleaner solid objects; still based on PE/PET/PP foreground spectra
+  synthetic_as_bgr: true
+  convert_to_bgr: true
+  roll_direction: up
+
+  # Real mvIMPACT options, used when source is auto/mvimpact and hardware exists.
+  device_index: 1
+  timeout_ms: 250
+  request_count: 16
+  # Acquisition-stall recovery. At ~446 LPS a 5000 ms timeout hides stalls
+  # from the log/UI for several seconds. Keep timeout short so soft recovery
+  # is visible and quick. With read_retry_count=1, worst-case hidden block is
+  # roughly 2 * timeout_ms.
+  timeout_recovery_enabled: true
+  read_retry_count: 1
+  min_acquisition_restart_interval_s: 0.05
+  crop_size: 0
+  offset_x: 0
+  offset_y: 0
+  features:
+    # exposureTime: 5000
+    # gain: 0
+    # pixelFormat: Mono16
+    # triggerMode: Off
