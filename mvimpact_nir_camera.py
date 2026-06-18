@@ -32,6 +32,7 @@ import ctypes
 import os
 import time
 from typing import Any, Dict, Optional, Tuple
+from pathlib import Path
 
 import cv2
 import numpy as np
@@ -394,10 +395,12 @@ class MvImpactNIRCamera:
         if self.synthetic_material_templates:
             return
 
+        synthetic_dir = Path(__file__).resolve().parent / "NIR" / "_SYNTHETIC_DATA"
+
         default_paths = {
-            "PE": "PE.mat",
-            "PET": "PET.mat",
-            "PP": "PP.mat",
+            "PE": str(synthetic_dir / "PE.mat"),
+            "PET": str(synthetic_dir / "PET.mat"),
+            "PP": str(synthetic_dir / "PP.mat"),
         }
         configured = dict(default_paths)
         configured.update(self.synthetic_material_paths or {})
