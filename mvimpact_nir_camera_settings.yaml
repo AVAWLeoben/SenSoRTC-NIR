@@ -19,9 +19,9 @@ camera:
   synthetic_material_min_mean: 600
   synthetic_material_samples_per_class: 512
   synthetic_material_paths:
-    PE: PE.mat
-    PET: PET.mat
-    PP: PP.mat
+    PE: NIR/_SYNTHETIC_DATA/PE.mat
+    PET: NIR/_SYNTHETIC_DATA/PET.mat
+    PP: NIR/_SYNTHETIC_DATA/PP.mat
 
   synthetic_speed_px: 4.0       # retained for compatibility; object mode uses line age instead of diagonal sine/check patterns
   synthetic_noise: 8.0
@@ -47,14 +47,16 @@ camera:
   # Real mvIMPACT options, used when source is auto/mvimpact and hardware exists.
   device_index: 1
   timeout_ms: 250
-  request_count: 16
+  request_count: 64
   # Acquisition-stall recovery. At ~446 LPS a 5000 ms timeout hides stalls
   # from the log/UI for several seconds. Keep timeout short so soft recovery
   # is visible and quick. With read_retry_count=1, worst-case hidden block is
   # roughly 2 * timeout_ms.
   timeout_recovery_enabled: true
-  read_retry_count: 1
-  min_acquisition_restart_interval_s: 0.05
+  minimum_request_count: 32
+  read_retry_count: 5
+  request_not_ok_restart_after: 5
+  min_acquisition_restart_interval_s: 0.5
   crop_size: 0
   offset_x: 0
   offset_y: 0
