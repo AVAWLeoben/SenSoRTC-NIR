@@ -1,0 +1,79 @@
+camera:
+  index: 0
+  device_linux: /dev/video0
+  backend: Linux
+  format:
+    fourcc: MJPG
+    width: 1920
+    height: 1200
+    fps: 90.0
+  controls:
+    brightness:
+      value: -17
+      type: int
+      backend: v4l2
+    contrast:
+      value: 0
+      type: int
+      backend: v4l2
+    saturation:
+      value: 56
+      type: int
+      backend: v4l2
+    hue:
+      value: 0
+      type: int
+      backend: v4l2
+    white_balance_automatic:
+      value: 1
+      type: bool
+      backend: v4l2
+    gamma:
+      value: 64
+      type: int
+      backend: v4l2
+    gain:
+      value: 46
+      type: int
+      backend: v4l2
+    power_line_frequency:
+      value: 1
+      type: menu
+      backend: v4l2
+    sharpness:
+      value: 0
+      type: int
+      backend: v4l2
+    backlight_compensation:
+      value: 54
+      type: int
+      backend: v4l2
+    auto_exposure:
+      value: 1
+      type: menu
+      backend: v4l2
+    exposure_time_absolute:
+      value: 156
+      type: int
+      backend: v4l2
+    pan_absolute:
+      value: 0
+      type: int
+      backend: v4l2
+    tilt_absolute:
+      value: 0
+      type: int
+      backend: v4l2
+    focus_automatic_continuous:
+      value: 1
+      type: bool
+      backend: v4l2
+    zoom_absolute:
+      value: 0
+      type: int
+      backend: v4l2
+  reticule:
+    enabled: true
+    crop_size: 640
+    offset_x: 33
+    offset_y: -280
